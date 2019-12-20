@@ -1,0 +1,13 @@
+diff --git a/node_modules/vuetify/lib/components/VCarousel/VCarousel.js b/node_modules/vuetify/lib/components/VCarousel/VCarousel.js
+index a44af12..50da117 100644
+--- a/node_modules/vuetify/lib/components/VCarousel/VCarousel.js
++++ b/node_modules/vuetify/lib/components/VCarousel/VCarousel.js
+@@ -115,7 +115,7 @@ export default VWindow.extend({
+ 
+     genDelimiters() {
+       return this.$createElement('div', {
+-        staticClass: 'v-carousel__controls',
++        staticClass: 'v-carousel__controls mb-10',
+         style: {
+           left: this.verticalDelimiters === 'left' && this.isVertical ? 0 : 'auto',
+           right: this.verticalDelimiters === 'right' ? 0 : 'auto'
