@@ -73,12 +73,11 @@
     <v-content>
       <v-carousel
         height="100%"
-        active-class="active_slide"
         hide-delimiter-background
-        :vertical-delimiters="true"
+        :delimiter-icon="!$vuetify.breakpoint.smAndDown ? 'mdi-circle' : 'mdi-circle-medium'"
+        :show-arrows="false"
         :continuous="true"
-        :cycle="true"
-        :interval="10000"
+
       >
         <v-carousel-item
           :style="{
@@ -117,10 +116,20 @@
               height: '100%'
             }"
           >
-            <span>test</span>
+
           </div>
         </v-carousel-item>
       </v-carousel>
+      <img
+        :style="{
+          position: 'absolute',
+          width: '100%',
+          bottom: $vuetify.breakpoint.mdAndUp ? '-3vh' : '0',
+          objectFit: 'cover',
+          minHeight: $vuetify.breakpoint.xsOnly ? '70px' : ''
+        }"
+        :src="wave_1"
+      />
     </v-content>
   </v-app>
 </template>
@@ -137,7 +146,8 @@ export default {
   data: () => ({
     logo: require('./assets/logo_horiz_turq_whitetext.png'),
     carpet_living_room: require('./assets/slides/carpet_living_room.jpg'),
-    phone_number: '450-218-1279'
+    phone_number: '450-218-1279',
+    wave_1: require('./assets/waves/wave_11.webp')
   }),
 
   computed: {
@@ -155,8 +165,12 @@ export default {
   font-family: 'Babylove' !important
 }
 
-.active_slide {
-  background-color: red
+.v-window-item--active {
+  color: white
+}
+
+.v-carousel__controls {
+
 }
 </style>
 <style lang="scss">
@@ -171,4 +185,5 @@ export default {
     } 
   } 
 }
+
 </style>
