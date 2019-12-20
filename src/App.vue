@@ -7,37 +7,39 @@
     >
       <div class="d-flex align-center">
         <v-img
-          alt="Vuetify Logo"
+          alt="Team Clean Logo"
           class="shrink mr-2 mb-2"
           contain
-          :src="logo"
+          :src="$vuetify.breakpoint.xsOnly ? sq_logo : logo"
           transition="scale-transition"
-          width="125"
+          :width="$vuetify.breakpoint.xsOnly ? '50' : '125px'"
         />
       </div>
 
       <v-spacer></v-spacer>
-      <v-btn
-        text
-        rounded
-        class="navbar_button"
-      >
-        Services
-      </v-btn>
-      <v-btn
-        text
-        rounded
-        class="navbar_button"
-      >
-        About us
-      </v-btn>
-      <v-btn
-        text
-        rounded
-        class="navbar_button"
-      >
-        Contact
-      </v-btn>
+      <div v-if="!$vuetify.breakpoint.xsOnly">
+        <v-btn
+          text
+          rounded
+          class="navbar_button"
+        >
+          Services
+        </v-btn>
+        <v-btn
+          text
+          rounded
+          class="navbar_button"
+        >
+          About us
+        </v-btn>
+        <v-btn
+          text
+          rounded
+          class="navbar_button"
+        >
+          Contact
+        </v-btn>
+      </div>
       <v-spacer></v-spacer>
       <v-divider
         vertical
@@ -71,70 +73,147 @@
     </v-app-bar>
 
     <v-content>
-      <v-carousel
-        height="100%"
-        hide-delimiter-background
-        :delimiter-icon="!$vuetify.breakpoint.smAndDown ? 'mdi-circle' : 'mdi-circle-medium'"
-        :show-arrows="false"
-        :continuous="true"
-        active-class="slide-active"
-        v-model="carousel_slide"
+      <div
+        :style="{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: $vuetify.breakpoint.xsOnly ? '40%' : $vuetify.breakpoint.smOnly ? '60%' : '100%',
+          backgroundColor: '#446699',
+        }"
       >
-        <v-carousel-item
-          :style="{
-            backgroundImage: `url('${carpet_living_room}')`,
-            backgroundSize: 'cover',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
-          }"
+        <v-carousel
+          height="100%"
+          hide-delimiter-background
+          :hide-delimiters="$vuetify.breakpoint.xsOnly"
+          :delimiter-icon="$vuetify.breakpoint.smOnly ? 'mdi-circle-medium' : 'mdi-circle'"
+          :show-arrows="false"
+          :continuous="true"
+          v-model="carousel_slide"
         >
-          <div
+          <v-carousel-item
             :style="{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              height: '100%'
             }"
+            transition="none"
+            reverse-transition="none"
           >
-            <span>test</span>
-          </div>
-        </v-carousel-item>
-        <v-carousel-item
+            <transition name="item-fade">
+              <div
+                v-if="carousel_slide == 0"
+                class="d-flex align-center justify-center wrap"
+                :style="{
+                  height: '100%',
+                  backgroundImage: `url('${carpet_living_room}')`,
+                  backgroundSize: 'cover',
+                }"
+              >
+                <div :style="{
+                  marginBottom: '5vh'
+                }">
+                  <transition name="fade">
+                    <h3
+                      v-if="carousel_slide == 0"
+                      :style="{
+                        color: 'white',
+                        fontFamily: `'Dancing Script', cursive`,
+                        fontWeight: '600',
+                        fontSize: $vuetify.breakpoint.xsOnly ? '22px' : '38px',
+                        textAlign: 'center'
+                      }"
+                    >
+                      Residential Cleaning
+                    </h3>
+                  </transition>
+                  <transition name="fade">
+                    <h3
+                      class="mx-8"
+                      v-if="carousel_slide == 0"
+                      :style="{
+                        color: 'white',
+                        fontFamily: `'Poppins', sans-serif`,
+                        fontWeight: '600',
+                        fontSize: $vuetify.breakpoint.xsOnly ? '26px' : '53px',
+                        textAlign: 'center',
+                      }"
+                    >
+                      Let us take care of your home
+                    </h3>
+                  </transition>
+                </div>
+              </div>
+            </transition>
+          </v-carousel-item>
+          <v-carousel-item
+            :style="{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }"
+            transition="none"
+            reverse-transition="none"
+          >
+            <transition name="item-fade">
+              <div
+                v-if="carousel_slide == 1"
+                class="d-flex align-center justify-center wrap"
+                :style="{
+                  height: '100%',
+                  backgroundImage: `url('${carpet_living_room}')`,
+                  backgroundSize: 'cover',
+                }"
+              >
+                <div :style="{
+                  marginBottom: '5vh'
+                }">
+                  <transition name="fade">
+                    <h3
+                      v-if="carousel_slide == 1"
+                      :style="{
+                        color: 'white',
+                        fontFamily: `'Dancing Script', cursive`,
+                        fontWeight: '600',
+                        fontSize: $vuetify.breakpoint.xsOnly ? '22px' : '38px',
+                        textAlign: 'center'
+                      }"
+                    >
+                      Commercial Space Maintenance
+                    </h3>
+                  </transition>
+                  <transition name="fade">
+                    <h3
+                      class="mx-8"
+                      v-if="carousel_slide == 1"
+                      :style="{
+                        color: 'white',
+                        fontFamily: `'Poppins', sans-serif`,
+                        fontWeight: '600',
+                        fontSize: $vuetify.breakpoint.xsOnly ? '26px' : '53px',
+                        textAlign: 'center',
+                      }"
+                    >
+                      ... Or your business
+                    </h3>
+                  </transition>
+                </div>
+              </div>
+            </transition>
+          </v-carousel-item>
+        </v-carousel>
+        <img
           :style="{
-            backgroundImage: `url('${carpet_living_room}')`,
-            backgroundSize: 'cover',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'
+            position: 'absolute',
+            width: '100%',
+            bottom: $vuetify.breakpoint.mdAndUp ? '-3vh' : '0',
+            objectFit: 'cover',
           }"
-        >
-          <transition name="fade">
-            <div
-              v-if="current_slide == 1"
-              :style="{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                height: '100%',
-                color: 'white'
-              }"
-            >
-              <span class="slide_text"> TESTING </span>
-            </div>
-          </transition>
-        </v-carousel-item>
-      </v-carousel>
-      <img
-        :style="{
-          position: 'absolute',
-          width: '100%',
-          bottom: $vuetify.breakpoint.mdAndUp ? '-3vh' : '0',
-          objectFit: 'cover',
-          minHeight: $vuetify.breakpoint.xsOnly ? '70px' : ''
-        }"
-        :src="wave_1"
-      />
+          :src="wave_1"
+        />
+      </div>
+
     </v-content>
   </v-app>
 </template>
@@ -149,18 +228,15 @@ export default {
   },
 
   watch: {
-    carousel_slide (val) {
-      setTimeout(() => this.current_slide = val, 500)
-    }
   },
 
   data: () => ({
     logo: require('./assets/logo_horiz_turq_whitetext.png'),
+    sq_logo: require('./assets/logo_turq_whitetext.png'),
     carpet_living_room: require('./assets/slides/carpet_living_room.jpg'),
     phone_number: '450-218-1279',
     wave_1: require('./assets/waves/wave_11.webp'),
     carousel_slide: 0,
-    current_slide: 0
   }),
 
   computed: {
@@ -172,6 +248,9 @@ export default {
 };
 </script>
 <style>
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Dancing+Script&display=swap');
+
 @font-face {
   font-family: "Babylove";
   src: url("assets/fonts/Babylove-zGwX.ttf") format("woff2");
@@ -183,6 +262,13 @@ export default {
 
 .v-window-item--active {
   color: white
+}
+
+.item-fade-enter-to {
+  transition: opacity 1s;
+}
+.item-fade-enter, .item-fade-leave-to {
+  opacity: 0.3
 }
 
 .fade-enter-to {
@@ -199,6 +285,7 @@ export default {
 }
 </style>
 <style lang="scss">
+/**
 .v-window { 
   &-x-transition, 
   &-x-reverse-transition, 
@@ -206,9 +293,9 @@ export default {
   &-y-reverse-transition { 
     &-enter-active, 
     &-leave-active { 
-      transition: .6s cubic-bezier(.70, .8, .50, 1) !important; 
+      transition: opacity 0.5s 
     } 
   } 
 }
-
+ */
 </style>
