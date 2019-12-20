@@ -77,7 +77,8 @@
         :delimiter-icon="!$vuetify.breakpoint.smAndDown ? 'mdi-circle' : 'mdi-circle-medium'"
         :show-arrows="false"
         :continuous="true"
-
+        active-class="slide-active"
+        v-model="carousel_slide"
       >
         <v-carousel-item
           :style="{
@@ -108,16 +109,20 @@
             justifyContent: 'center'
           }"
         >
-          <div
-            :style="{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              height: '100%'
-            }"
-          >
-
-          </div>
+          <transition name="fade">
+            <div
+              v-if="current_slide == 1"
+              :style="{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                color: 'white'
+              }"
+            >
+              <span class="slide_text"> TESTING </span>
+            </div>
+          </transition>
         </v-carousel-item>
       </v-carousel>
       <img
@@ -143,15 +148,26 @@ export default {
     
   },
 
+  watch: {
+    carousel_slide (val) {
+      setTimeout(() => this.current_slide = val, 500)
+    }
+  },
+
   data: () => ({
     logo: require('./assets/logo_horiz_turq_whitetext.png'),
     carpet_living_room: require('./assets/slides/carpet_living_room.jpg'),
     phone_number: '450-218-1279',
-    wave_1: require('./assets/waves/wave_11.webp')
+    wave_1: require('./assets/waves/wave_11.webp'),
+    carousel_slide: 0,
+    current_slide: 0
   }),
 
   computed: {
 
+  },
+
+  methods: {
   }
 };
 </script>
@@ -169,8 +185,17 @@ export default {
   color: white
 }
 
-.v-carousel__controls {
+.fade-enter-to {
+  transition: opacity 0.3s;
+  animation: slide-in  0.3s forwards;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 
+@keyframes slide-in {
+  0% { transform: translateY(50px); }
+  100% { transform: translateY(0); }
 }
 </style>
 <style lang="scss">
