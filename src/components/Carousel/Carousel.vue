@@ -16,21 +16,34 @@
       :cycle="false"
       v-model="carousel_slide"
     >
-      <CarouselItem
-        v-for="(item, index) in carousel_items"
+      <v-carousel-item
+        v-for="(carousel_item, index) in carousel_items"
         :key="index"
-        :item="item"
-        :index="index"
-        :carousel_slide="carousel_slide"
+        :style="{display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'}"
+        transition="none"
+        reverse-transition="none" 
+        :eager="true"
+        class="carousel_item_container"
       >
-        <template v-slot:ctoa>
-          No Slot
-        </template>
-      </CarouselItem>
+
+        <CarouselItem
+          v-if="carousel_slide == index"
+          :carousel_item="carousel_item"
+          :index="index"
+          :carousel_slide="carousel_slide"
+        >
+          <template v-slot:ctoa>
+            No Slot
+          </template>
+        </CarouselItem>
+      </v-carousel-item>
+
     </v-carousel>
     <img
       class="wave"
-      :style="{bottom: $vuetify.breakpoint.mdAndUp ? '-3vh' : '0'}"
+      :style="{bottom: $vuetify.breakpoint.mdAndUp ? '-2vh' : '0'}"
       :src="wave_1"
     />
   </div>
@@ -67,53 +80,12 @@ export default {
   width: 100%;
   background-color: #335588;
 }
-
-.item {
-  height: 100%;
-  background-size: cover;
-}
-.item-fade-enter-to {
-  transition: opacity 1s;
-}
-.item-fade-enter, .item-fade-leave-to {
-  opacity: 0.3
-}
-
-.item_title {
-  color: white;
-  font-family: 'Dancing Script', cursive;
-  font-weight: 600;
-  text-align: center
-
-}
-.titleanim-enter-to {
-  transition: opacity 0.7s;
-  transition-delay: 0s;
-  animation: slide-in  0.7s forwards;
-}
-.titleanim-enter, .titleanim-leave-to {
-  opacity: 0
-}
-
-.phrase {
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
-  text-align: center
-}
-.phraseanim-enter-to {
-  transition: opacity 0.7s;
-  transition-delay: 0.15s;
-  animation: slide-in  0.7s forwards;
-}
-.phraseanim-enter, .phraseanim-leave-to {
-  opacity: 0
-}
-
-
-@keyframes slide-in {
-  0% { transform: translateY(50px); }
-  100% { transform: translateY(0); }
+.carousel_item_container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0
 }
 
 .wave {

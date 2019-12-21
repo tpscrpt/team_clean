@@ -2,11 +2,18 @@ module.exports = [
     {
         'title': 'Residential Cleaning',
         'phrase': 'Let us take care of your home',
-        'image': require('../../assets/slides/carpet_living_room.jpg')
+        'image': require('../../assets/slides/residential_cleaning.jpg')
     },
     {
         'title': 'Commercial Space Maintenance',
         'phrase': '... Or your business',
-        'image': require('../../assets/slides/commercial_cleaning.jpg')
+        'image': require('../../assets/slides/commercial_space_maintenance_small.jpg')
+    },
+    {
+        'title': 'Infrastructure Sanitization',
+        'phrase': 'Maybe you need something else cleaned',
+        'image': require('../../assets/slides/infrastructure_sanitization_small.jpg'),
+        'credits': 'Photo by James Pond on Unsplash'
     }
 ]
+

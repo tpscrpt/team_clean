@@ -1,70 +1,62 @@
 <template>
-  <v-carousel-item
-    :style="{display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center'}"
-    transition="fade"
-    reverse-transition="fade"
-    :eager="true"
-  >
-    <transition name="item-fade">
+  <transition name="item-fade" appear>
+    <div
+      class="carousel_item d-flex align-center justify-center wrap"
+      v-if="show"
+      :style="{background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${carousel_item.image}')`}"
+    >
       <div
-        class="item d-flex align-center justify-center wrap"
-        v-if="carousel_slide == index"
-        :style="{backgroundImage: `url('${item.image}')`}"
+        :style="{marginBottom: '5vh'}"
       >
-        <div
-          :style="{marginBottom: '5vh'}"
-        >
-          <transition name="titleanim" appear>
-            <h3
-              class="item_title"
-              v-if="carousel_slide == index"
-              :style="{fontSize: $vuetify.breakpoint.xsOnly ? '22px' : '38px'}"
-            >
-              {{item.title}}
-            </h3>
-          </transition>
-          
-          <transition name="phraseanim" appear>
-            <h3
-              class="phrase mx-8"
-              v-if="carousel_slide == index"
-              :style="{fontSize: $vuetify.breakpoint.xsOnly ? '26px' : '53px'}"
-            >
-              {{item.phrase}}
-            </h3>
-          </transition>
-          
-          <transition name="ctoa" appear>
-            <slot name="ctoa"></slot>
-          </transition>
+        <transition name="titleanim" appear>
+          <h3
+            class="item_title"
+            v-if="show"
+            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '22px' : '38px'}"
+          >
+            {{carousel_item.title}}
+          </h3>
+        </transition>
+        
+        <transition name="phraseanim" appear>
+          <h3
+            class="phrase mx-8"
+            v-if="show"
+            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '26px' : '53px'}"
+          >
+            {{carousel_item.phrase}}
+          </h3>
+        </transition>
+        
+        <transition name="ctoa" appear>
+          <slot name="ctoa"></slot>
+        </transition>
 
-        </div>
       </div>
-    </transition>
-  </v-carousel-item>
-
+    </div>
+  </transition>
 </template>
 
 <script>
 export default {
   name: "CarouselItem",
   components: {},
-  props: ['item', 'carousel_slide', 'index'],
+  props: ['carousel_item', 'carousel_slide', 'index'],
   data: () => ({
   }),
-  watch: {
-  },
+  watch: {},
   computed: {
+    show () {
+      return this.carousel_slide == this.index
+    }
   }
 };
 </script>
 
 <style scoped>
-.item {
+.carousel_item {
   height: 100%;
-  background-size: cover;
+  background-size: cover !important;
 }
 .item-fade-enter-to {
   transition: opacity 1s;

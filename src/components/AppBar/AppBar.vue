@@ -5,9 +5,10 @@
         alt="Team Clean Logo"
         class="shrink mr-2 mb-2"
         contain
-        :src="$vuetify.breakpoint.xsOnly ? sq_logo : logo"
+        :src="logo"
         transition="scale-transition"
-        :width="$vuetify.breakpoint.xsOnly ? '50' : '125px'"
+        :width="$vuetify.breakpoint.xsOnly ? '100px' :
+                $vuetify.breakpoint.smOnly ? '125px' : '150px'"
       />
     </div>
 
@@ -69,7 +70,6 @@ export default {
   components: {},
   data: () => ({
     logo: require('../../assets/logo_horiz_turq_whitetext.png'),
-    sq_logo: require('../../assets/logo_turq_whitetext.png'),
   }),
 };
 </script>
