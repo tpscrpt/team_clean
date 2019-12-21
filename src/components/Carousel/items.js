@@ -11,7 +11,7 @@ module.exports = [
     },
     {
         'title': 'Infrastructure Sanitization',
-        'phrase': 'Maybe you need something else cleaned',
+        'phrase': 'We lend you a hand',
         'image': require('../../assets/slides/infrastructure_sanitization_small.jpg'),
         'credits': 'Photo by James Pond on Unsplash'
     }
