@@ -7,8 +7,7 @@
         contain
         :src="logo"
         transition="scale-transition"
-        :width="$vuetify.breakpoint.xsOnly ? '100px' :
-                $vuetify.breakpoint.smOnly ? '125px' : '150px'"
+        :width="$vuetify.breakpoint.smAndDown ? '125px' : '150px'"
       />
     </div>
 
