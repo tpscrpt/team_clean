@@ -98,6 +98,15 @@ export default {
   opacity: 0
 }
 
+.ctoa-enter-to {
+  transition: opacity 0.5s;
+  transition-delay: 0.6s;
+  animation-delay: 1s;
+  animation: slide-in-from-afar-more  0.7s forwards;
+}
+.ctoa-enter, .ctoa-leave-to {
+  opacity: 0
+}
 
 @keyframes slide-in {
   0% { transform: translateY(50px); }
@@ -105,6 +114,10 @@ export default {
 }
 @keyframes slide-in-from-afar {
   0% { transform: translateY(75px); }
+  100% { transform: translateY(0); }
+}
+@keyframes slide-in-from-afar-more {
+  0% { transform: translateY(100px); }
   100% { transform: translateY(0); }
 }
 </style>

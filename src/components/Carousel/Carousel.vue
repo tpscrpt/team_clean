@@ -13,13 +13,14 @@
       :delimiter-icon="$vuetify.breakpoint.smOnly ? 'mdi-circle-medium' : 'mdi-circle'"
       :show-arrows="false"
       :continuous="true"
-      :cycle="false"
+      :cycle="true"
+      :interval="7500"
       v-model="carousel_slide"
     >
       <v-carousel-item
         v-for="(carousel_item, index) in carousel_items"
         :key="index"
-        :style="{display: 'flex',
+        :style="{display: carousel_slide == index ? 'flex' : 'none',
                 alignItems: 'center',
                 justifyContent: 'center'}"
         transition="none"
@@ -35,7 +36,9 @@
           :carousel_slide="carousel_slide"
         >
           <template v-slot:ctoa>
-            No Slot
+            <ResidentialCleaningCTOA v-if="index === 0" :callback="fill_estimate_form"/>
+            <CommercialSpaceMaintenanceCTOA v-if="index === 1" :callback="fill_meeting_form"/>
+            <InfrastructureSanitizationCTOA v-if="index === 2" :callback="talk_to_rep"/>
           </template>
         </CarouselItem>
       </v-carousel-item>
@@ -52,18 +55,36 @@
 
 <script>
 import CarouselItem from './CarouselItem'
+import ResidentialCleaningCTOA from './CTOAs/ResidentialCleaning/ResidentialCleaning'
+import CommercialSpaceMaintenanceCTOA from './CTOAs/CommercialSpaceMaintenance/CommercialSpaceMaintenance'
+import InfrastructureSanitizationCTOA from './CTOAs/InfrastructureSanitization/InfrastructureSanitization'
 import carousel_items from './items'
 
 export default {
   name: 'Carousel',
   components: {
-    CarouselItem
+    CarouselItem,
+    ResidentialCleaningCTOA,
+    CommercialSpaceMaintenanceCTOA,
+    InfrastructureSanitizationCTOA
   },
   data: () => ({
     wave_1: require('../../assets/waves/wave_11.webp'),
     carousel_slide: 0,
     carousel_items,
   }),
+
+  methods: {
+    fill_estimate_form () {
+      console.log('redirecting to estimate form completion')
+    },
+    fill_meeting_form () {
+      console.log('redirecting to meeting form completion')
+    },
+    talk_to_rep() {
+      console.log('popover talk to a rep details')
+    }
+  },
 
   watch: {
     carousel_slide(val) {
