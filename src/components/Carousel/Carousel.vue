@@ -43,7 +43,8 @@
     </v-carousel>
     <img
       class="wave"
-      :style="{bottom: $vuetify.breakpoint.mdAndUp ? '-2vh' : '0'}"
+      :style="{bottom: $vuetify.breakpoint.lgAndUp ? '-3vh' : 
+                       $vuetify.breakpoint.mdOnly ? '-2vh' : '0'}"
       :src="wave_1"
     />
   </div>
