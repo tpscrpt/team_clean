@@ -1,16 +1,15 @@
 <template>
   <div class="ctoa_container d-flex align-center justify-center mt-4">
-    <v-btn class="residential_cleaning_ctoa"
+    <v-btn class="d-flex align-center justify-center"
       rounded
       color="accent"
       @click="() => callback()"
-      x-large
-      :style="{
-        fontSize: $vuetify.breakpoint.mdAndUp ? '26px' : '22px',
-        zIndex: '22'
-      }"
+      :x-large="!$vuetify.breakpoint.xsOnly"
+      :small="$vuetify.breakpoint.xsOnly"
+      :style="{fontSize: $vuetify.breakpoint.mdAndUp ? '26px' : 
+                         $vuetify.breakpoint.xsOnly  ? '18px' : '23px'}"
     >
-      <span> Free Estimate </span>
+      <span> {{text}} </span>
     </v-btn>
   </div>
 
@@ -20,7 +19,7 @@
 export default {
   name: 'ResidentialCleaningCTOA',
   components: {},
-  props: ['callback'],
+  props: ['callback', 'text'],
   data: () => ({}),
   computed: {},
   watch: {}
@@ -29,9 +28,7 @@ export default {
 
 <style>
 .ctoa_container {
-  width: 100%
-}
-.residential_cleaning_ctoa {
+  width: 100%;
   font-family: 'Babylove';
 }
 </style>

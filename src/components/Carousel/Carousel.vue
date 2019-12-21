@@ -13,7 +13,7 @@
       :delimiter-icon="$vuetify.breakpoint.smOnly ? 'mdi-circle-medium' : 'mdi-circle'"
       :show-arrows="false"
       :continuous="true"
-      :cycle="true"
+      :cycle="false"
       :interval="7500"
       v-model="carousel_slide"
     >
@@ -36,9 +36,9 @@
           :carousel_slide="carousel_slide"
         >
           <template v-slot:ctoa>
-            <ResidentialCleaningCTOA v-if="index === 0" :callback="fill_estimate_form"/>
-            <CommercialSpaceMaintenanceCTOA v-if="index === 1" :callback="fill_meeting_form"/>
-            <InfrastructureSanitizationCTOA v-if="index === 2" :callback="talk_to_rep"/>
+            <CTOA v-if="index === 0" :callback="fill_estimate_form" text="Free Estimate"/>
+            <CTOA v-if="index === 1" :callback="fill_meeting_form" text="Schedule A Meeting"/>
+            <CTOA v-if="index === 2" :callback="talk_to_rep" text="Talk To A Rep"/>
           </template>
         </CarouselItem>
       </v-carousel-item>
@@ -55,21 +55,17 @@
 
 <script>
 import CarouselItem from './CarouselItem'
-import ResidentialCleaningCTOA from './CTOAs/ResidentialCleaning/ResidentialCleaning'
-import CommercialSpaceMaintenanceCTOA from './CTOAs/CommercialSpaceMaintenance/CommercialSpaceMaintenance'
-import InfrastructureSanitizationCTOA from './CTOAs/InfrastructureSanitization/InfrastructureSanitization'
+import CTOA from './CTOA'
 import carousel_items from './items'
 
 export default {
   name: 'Carousel',
   components: {
     CarouselItem,
-    ResidentialCleaningCTOA,
-    CommercialSpaceMaintenanceCTOA,
-    InfrastructureSanitizationCTOA
+    CTOA
   },
   data: () => ({
-    wave_1: require('../../assets/waves/wave_11.webp'),
+    wave_1: require('../../assets/waves/wave_1.webp'),
     carousel_slide: 0,
     carousel_items,
   }),

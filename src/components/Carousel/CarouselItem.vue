@@ -12,7 +12,7 @@
           <h3
             class="item_title"
             v-if="show"
-            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '26px' : '38px'}"
+            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '20px' : '38px'}"
           >
             {{carousel_item.title}}
           </h3>
@@ -22,7 +22,7 @@
           <h3
             class="phrase mx-8"
             v-if="show"
-            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '32px' : '53px'}"
+            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '24px' : '53px'}"
           >
             {{carousel_item.phrase}}
           </h3>
@@ -57,6 +57,7 @@ export default {
 .carousel_item {
   height: 100%;
   background-size: cover !important;
+  user-select: none
 }
 .item-fade-enter-to {
   transition: opacity 1s;
