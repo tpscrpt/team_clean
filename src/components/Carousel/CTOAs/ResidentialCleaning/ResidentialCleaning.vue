@@ -6,7 +6,7 @@
       @click="() => callback()"
       x-large
       :style="{
-        fontSize: $vuetify.breakpoint.mdAndUp ? '28px' : '22px',
+        fontSize: $vuetify.breakpoint.mdAndUp ? '26px' : '22px',
         zIndex: '22'
       }"
     >
