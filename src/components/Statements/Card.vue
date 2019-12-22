@@ -6,7 +6,7 @@
   >
     <div class="d-flex align-center" :style="cardHeaderStyle">
       <v-icon
-        :size="$vuetify.breakpoint.xsOnly ? '24px' : $vuetify.breakpoint.smOnly ? '32px' : '56px'"
+        :size="$vuetify.breakpoint.xsOnly ? '40px' : $vuetify.breakpoint.smOnly ? '32px' : '56px'"
         color="secondary"
         :style="{display: $vuetify.breakpoint.xsOnly ? 'block' : undefined}"
       >

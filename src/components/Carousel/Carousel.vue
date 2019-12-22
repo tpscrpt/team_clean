@@ -9,8 +9,8 @@
     <v-carousel
       height="100%"
       hide-delimiter-background
-      :hide-delimiters="$vuetify.breakpoint.xsOnly"
-      :delimiter-icon="$vuetify.breakpoint.smOnly ? 'mdi-circle-medium' : 'mdi-circle'"
+      hide-delimiters
+      delimiter-icon="mdi-circle"
       :show-arrows="false"
       :continuous="true"
       :cycle="false"
@@ -44,12 +44,6 @@
       </v-carousel-item>
 
     </v-carousel>
-    <img
-      class="wave"
-      :style="{bottom: $vuetify.breakpoint.lgAndUp ? '-3vh' : 
-                       $vuetify.breakpoint.mdOnly ? '-2vh' : '0'}"
-      :src="wave_1"
-    />
   </div>
 </template>
 
@@ -65,7 +59,6 @@ export default {
     CTOA
   },
   data: () => ({
-    wave_1: require('../../assets/waves/wave_1.webp'),
     carousel_slide: 0,
     carousel_items,
   }),
@@ -92,10 +85,8 @@ export default {
 
 <style scoped>
 .carousel_container {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
+  height: 100%;
   background-color: #335588;
 }
 .carousel_item_container {
@@ -106,9 +97,5 @@ export default {
   bottom: 0
 }
 
-.wave {
-  position: absolute;
-  width: 100%;
-  object-fit: cover;
-}
+
 </style>

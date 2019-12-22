@@ -4,10 +4,10 @@
       rounded
       color="accent"
       @click="() => callback()"
-      :x-large="!$vuetify.breakpoint.xsOnly"
-      :small="$vuetify.breakpoint.xsOnly"
+      :x-large="!$vuetify.breakpoint.smAndDown"
+      :small="$vuetify.breakpoint.smAndDown"
       :style="{fontSize: $vuetify.breakpoint.mdAndUp ? '26px' : 
-                         $vuetify.breakpoint.xsOnly  ? '18px' : '23px'}"
+                         $vuetify.breakpoint.smAndDown  ? '18px' : '23px'}"
     >
       <span> {{text}} </span>
     </v-btn>
