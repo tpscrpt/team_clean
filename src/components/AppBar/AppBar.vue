@@ -18,12 +18,6 @@
             fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
         }"
       >
-        Services</v-btn>
-      <v-btn text rounded class="navbar_button"
-        :style="{
-            fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
-        }"
-      >
         About us</v-btn>
       <v-btn text rounded class="navbar_button"
         :style="{

@@ -3,7 +3,8 @@
     <AppBar />
 
     <v-content>
-      <Carousel />
+      <Carousel v-if="false"/>
+      <AboutUs v-if="true"/>
     </v-content>
   </v-app>
 </template>
@@ -11,13 +12,15 @@
 <script>
 import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
+import AboutUs from './components/AboutUs/AboutUs'
 
 export default {
   name: 'App',
 
   components: {
     AppBar,
-    Carousel
+    Carousel,
+    AboutUs,
   },
 
   watch: {

@@ -3,8 +3,10 @@
     class="carousel_container"
     :style="{width: '100%',
              padding: 0,
-             height: $vuetify.breakpoint.xsOnly ? '80%' : 
-                     $vuetify.breakpoint.smOnly ? '80%' : '100%'}"
+             height: $vuetify.breakpoint.xsOnly ? '80vh' : 
+                     $vuetify.breakpoint.smOnly ? '80vh' :
+                     $vuetify.breakpoint.mdOnly ? '80vh' :
+                     $vuetify.breakpoint.lgOnly ? '90vh' : '90vh'}"
   >
     <v-carousel
       height="100%"
@@ -46,8 +48,9 @@
     </v-carousel>
     <img
       class="wave"
-      :style="{bottom: $vuetify.breakpoint.lgAndUp ? '-3vh' : 
-                       $vuetify.breakpoint.mdOnly ? '-2vh' : '0'}"
+      :style="{bottom: $vuetify.breakpoint.lgAndUp ? '-1.5vh' : 
+                       $vuetify.breakpoint.smOnly ? '-1.5vh' :
+                       $vuetify.breakpoint.mdOnly ? '-1.5vh' : '0'}"
       :src="wave_1"
     />
   </div>
