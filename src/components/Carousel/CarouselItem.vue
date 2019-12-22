@@ -6,13 +6,19 @@
       :style="{background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${carousel_item.image}')`}"
     >
       <div
-        :style="{marginBottom: '5vh'}"
+        :style="{marginTop: $vuetify.breakpoint.xsOnly ? '-24px' : 
+                            $vuetify.breakpoint.smOnly ? '-32px' : 
+                            $vuetify.breakpoint.mdOnly ? '-2vh' : 
+                            $vuetify.breakpoint.lgOnly ? '-3vh' : '-4vh'}"
       >
         <transition name="titleanim" appear>
           <h3
             class="item_title"
             v-if="show"
-            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '26px' : '38px'}"
+            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '26px' : 
+                               $vuetify.breakpoint.smOnly ? '30px' : 
+                               $vuetify.breakpoint.mdOnly ? '34px' : 
+                               $vuetify.breakpoint.lgOnly ? '38px' : '42px'}"
           >
             {{carousel_item.title}}
           </h3>
@@ -22,7 +28,10 @@
           <h3
             class="phrase mx-8"
             v-if="show"
-            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '32px' : '53px'}"
+            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '30px' : 
+                               $vuetify.breakpoint.smOnly ? '34px' : 
+                               $vuetify.breakpoint.mdOnly ? '38px' : 
+                               $vuetify.breakpoint.lgOnly ? '42px' : '46px'}"
           >
             {{carousel_item.phrase}}
           </h3>

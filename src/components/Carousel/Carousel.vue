@@ -3,17 +3,16 @@
     class="carousel_container"
     :style="{width: '100%',
              padding: 0,
-             height: $vuetify.breakpoint.xsOnly ? '40%' : 
-                     $vuetify.breakpoint.smOnly ? '60%' : '100%'}"
+             height: $vuetify.breakpoint.xsOnly ? '80%' : 
+                     $vuetify.breakpoint.smOnly ? '80%' : '100%'}"
   >
     <v-carousel
       height="100%"
       hide-delimiter-background
-      :hide-delimiters="$vuetify.breakpoint.xsOnly"
-      :delimiter-icon="$vuetify.breakpoint.smOnly ? 'mdi-circle-medium' : 'mdi-circle'"
+      :hide-delimiters="true"
       :show-arrows="false"
       :continuous="true"
-      :cycle="true"
+      :cycle="false"
       :interval="7500"
       v-model="carousel_slide"
     >
@@ -36,9 +35,10 @@
           :carousel_slide="carousel_slide"
         >
           <template v-slot:ctoa>
-            <ResidentialCleaningCTOA v-if="index === 0" :callback="fill_estimate_form"/>
-            <CommercialSpaceMaintenanceCTOA v-if="index === 1" :callback="fill_meeting_form"/>
-            <InfrastructureSanitizationCTOA v-if="index === 2" :callback="talk_to_rep"/>
+            
+            <CTOA v-if="index === 0" :callback="fill_estimate_form" text="Free Estimate"/>
+            <CTOA v-if="index === 1" :callback="fill_meeting_form" text="Schedule a meeting"/>
+            <CTOA v-if="index === 2" :callback="talk_to_rep" text="Talk to a rep"/>
           </template>
         </CarouselItem>
       </v-carousel-item>
@@ -55,21 +55,17 @@
 
 <script>
 import CarouselItem from './CarouselItem'
-import ResidentialCleaningCTOA from './CTOAs/ResidentialCleaning/ResidentialCleaning'
-import CommercialSpaceMaintenanceCTOA from './CTOAs/CommercialSpaceMaintenance/CommercialSpaceMaintenance'
-import InfrastructureSanitizationCTOA from './CTOAs/InfrastructureSanitization/InfrastructureSanitization'
+import CTOA from './CTOA'
 import carousel_items from './items'
 
 export default {
   name: 'Carousel',
   components: {
     CarouselItem,
-    ResidentialCleaningCTOA,
-    CommercialSpaceMaintenanceCTOA,
-    InfrastructureSanitizationCTOA
+    CTOA
   },
   data: () => ({
-    wave_1: require('../../assets/waves/wave_11.webp'),
+    wave_1: require('../../assets/waves/wave_1.webp'),
     carousel_slide: 0,
     carousel_items,
   }),
@@ -96,14 +92,14 @@ export default {
 
 <style scoped>
 .carousel_container {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
   background-color: #335588;
 }
 .carousel_item_container {
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   width: 100%;
