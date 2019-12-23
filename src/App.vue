@@ -14,7 +14,7 @@
 <script>
 import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
-import AboutUs from './components/AboutUs/AboutUs'
+//import AboutUs from './components/AboutUs/AboutUs'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 export default {
@@ -23,7 +23,7 @@ export default {
   components: {
     AppBar,
     Carousel,
-    AboutUs,
+//    AboutUs,
     Contact,
     Footer,
   },
