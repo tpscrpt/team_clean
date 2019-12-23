@@ -60,6 +60,7 @@ export default {
 .carousel_item {
   height: 100%;
   background-size: cover !important;
+  user-select: none
 }
 .item-fade-enter-to {
   transition: opacity 1s;

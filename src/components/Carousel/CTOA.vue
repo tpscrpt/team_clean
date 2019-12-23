@@ -1,18 +1,13 @@
 <template>
-  <div class="ctoa_container d-flex align-center justify-center"
-    :style="{
-      marginTop: sn(16, 12, 24, 32, 40)
-    }"
-  >
-    <v-btn
-      class="d-flex align-center justify-center"
+  <div class="ctoa_container d-flex align-center justify-center mt-4">
+    <v-btn class="d-flex align-center justify-center"
       rounded
       color="accent"
       @click="() => callback()"
-      :x-large="$vuetify.breakpoint.mdAndUp"
-      :style="{
-        fontSize: s(18, 4)
-      }"
+      :x-large="!$vuetify.breakpoint.smAndDown"
+      :small="$vuetify.breakpoint.smAndDown"
+      :style="{fontSize: $vuetify.breakpoint.mdAndUp ? '26px' : 
+                         $vuetify.breakpoint.smAndDown  ? '18px' : '23px'}"
     >
       <span> {{text}} </span>
     </v-btn>
@@ -21,11 +16,8 @@
 </template>
 
 <script>
-import {s} from '../../mixins'
-
 export default {
-  name: 'CTOA',
-  mixins: [s],
+  name: 'ResidentialCleaningCTOA',
   components: {},
   props: ['callback', 'text'],
   data: () => ({}),

@@ -17,6 +17,7 @@ import Carousel from './components/Carousel/Carousel'
 //import AboutUs from './components/AboutUs/AboutUs'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
+
 export default {
   name: 'App',
 
@@ -32,7 +33,7 @@ export default {
   },
 
   data: () => ({
-
+    wave_1: require('./assets/waves/wave_1.webp'),
   }),
 
   computed: {
@@ -50,5 +51,8 @@ export default {
   font-family: "Babylove";
   src: url("assets/fonts/Babylove-zGwX.ttf") format("woff2");
 }
-
+.wave {
+  width: 100%;
+  object-fit: cover;
+}
 </style>

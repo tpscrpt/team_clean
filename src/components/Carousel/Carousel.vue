@@ -94,6 +94,7 @@ export default {
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   background-color: #335588;
 }
 .carousel_item_container {
@@ -104,9 +105,5 @@ export default {
   bottom: 0
 }
 
-.wave {
-  position: absolute;
-  width: 100%;
-  object-fit: cover;
-}
+
 </style>
