@@ -13,13 +13,13 @@
 
     <v-spacer></v-spacer>
     <div v-if="!$vuetify.breakpoint.xsOnly">
-      <v-btn text rounded class="navbar_button"
+      <v-btn text rounded class="navbar_link"
         :style="{
             fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
         }"
       >
         About us</v-btn>
-      <v-btn text rounded class="navbar_button"
+      <v-btn text rounded class="navbar_link"
         :style="{
             fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
         }"
@@ -68,7 +68,12 @@ export default {
 </script>
 
 <style>
-.navbar_button {
+.navbar_link {
   font-family: "Babylove" !important;
+}
+
+.navbar_button {
+    background-color: var(--v-accent-lighten1) !important;
+    font-family: "Babylove";
 }
 </style>
