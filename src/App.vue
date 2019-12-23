@@ -3,8 +3,9 @@
     <AppBar />
 
     <v-content>
-      <Carousel v-if="true"/>
-      <Why v-if="true"/>
+      <Carousel v-if="false"/>
+      <Why v-if="false"/>
+      <Meet v-if="true"/>
       <AboutUs v-if="false"/>
       <Contact v-if="false"/>
       <Footer v-if="false"/>
@@ -17,6 +18,7 @@ import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
 //import AboutUs from './components/AboutUs/AboutUs'
 import Why from './components/Why/Why'
+import Meet from './components/Meet/Meet'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 
@@ -28,6 +30,7 @@ export default {
     Carousel,
 //    AboutUs,
     Why,
+    Meet,
     Contact,
     Footer,
   },
