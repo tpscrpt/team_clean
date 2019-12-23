@@ -3,9 +3,10 @@
     <AppBar />
 
     <v-content>
-      <Carousel v-if="false"/>
+      <Carousel v-if="true"/>
+      <Why v-if="true"/>
       <AboutUs v-if="false"/>
-      <Contact v-if="true"/>
+      <Contact v-if="false"/>
       <Footer v-if="false"/>
     </v-content>
   </v-app>
@@ -15,6 +16,7 @@
 import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
 //import AboutUs from './components/AboutUs/AboutUs'
+import Why from './components/Why/Why'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 
@@ -25,6 +27,7 @@ export default {
     AppBar,
     Carousel,
 //    AboutUs,
+    Why,
     Contact,
     Footer,
   },
@@ -51,8 +54,7 @@ export default {
   font-family: "Babylove";
   src: url("assets/fonts/Babylove-zGwX.ttf") format("woff2");
 }
-.wave {
-  width: 100%;
-  object-fit: cover;
+html {
+  background-color: white !important;
 }
 </style>

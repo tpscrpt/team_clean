@@ -105,5 +105,9 @@ export default {
   bottom: 0
 }
 
-
+.wave {
+  position: absolute;
+  width: 100%;
+  object-fit: cover;
+}
 </style>
