@@ -3,10 +3,7 @@
     class="carousel_container"
     :style="{width: '100%',
              padding: 0,
-             height: $vuetify.breakpoint.xsOnly ? '80vh' : 
-                     $vuetify.breakpoint.smOnly ? '80vh' :
-                     $vuetify.breakpoint.mdOnly ? '80vh' :
-                     $vuetify.breakpoint.lgOnly ? '90vh' : '90vh'}"
+             height: sn(80, 80, 80, 90, 90, 'vh')}"
   >
     <v-carousel
       height="100%"
@@ -48,9 +45,7 @@
     </v-carousel>
     <img
       class="wave"
-      :style="{bottom: $vuetify.breakpoint.lgAndUp ? '-1.5vh' : 
-                       $vuetify.breakpoint.smOnly ? '-1.5vh' :
-                       $vuetify.breakpoint.mdOnly ? '-1.5vh' : '0'}"
+      :style="{bottom: sn(0, -1.5, -1.5, -1.5, -1.5, 'vh')}"
       :src="wave_1"
     />
   </div>
@@ -61,8 +56,11 @@ import CarouselItem from './CarouselItem'
 import CTOA from './CTOA'
 import carousel_items from './items'
 
+import {s} from '../../mixins'
+
 export default {
   name: 'Carousel',
+  mixins: [s],
   components: {
     CarouselItem,
     CTOA
@@ -86,9 +84,6 @@ export default {
   },
 
   watch: {
-    carousel_slide(val) {
-      console.log(val)
-    }
   }
 };
 </script>

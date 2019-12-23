@@ -1,10 +1,7 @@
 <template>
   <div class="ctoa_container d-flex align-center justify-center"
     :style="{
-      marginTop:  $vuetify.breakpoint.xsOnly ? '16px' : 
-                  $vuetify.breakpoint.smOnly ? '12px' : 
-                  $vuetify.breakpoint.mdOnly ? '24px' : 
-                  $vuetify.breakpoint.lgOnly ? '32px' : '40px',
+      marginTop: sn(16, 12, 24, 32, 40)
     }"
   >
     <v-btn
@@ -14,10 +11,7 @@
       @click="() => callback()"
       :x-large="$vuetify.breakpoint.mdAndUp"
       :style="{
-        fontSize: $vuetify.breakpoint.xsOnly ? '18px' : 
-                  $vuetify.breakpoint.smOnly ? '22px' : 
-                  $vuetify.breakpoint.mdOnly ? '26px' : 
-                  $vuetify.breakpoint.lgOnly ? '30px' : '44px',
+        fontSize: s(18, 4)
       }"
     >
       <span> {{text}} </span>
@@ -27,8 +21,11 @@
 </template>
 
 <script>
+import {s} from '../../mixins'
+
 export default {
   name: 'CTOA',
+  mixins: [s],
   components: {},
   props: ['callback', 'text'],
   data: () => ({}),

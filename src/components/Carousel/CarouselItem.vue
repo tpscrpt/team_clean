@@ -6,19 +6,13 @@
       :style="{background: `linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('${carousel_item.image}')`}"
     >
       <div
-        :style="{marginTop: $vuetify.breakpoint.xsOnly ? '-24px' : 
-                            $vuetify.breakpoint.smOnly ? '-32px' : 
-                            $vuetify.breakpoint.mdOnly ? '-2vh' : 
-                            $vuetify.breakpoint.lgOnly ? '-3vh' : '-4vh'}"
+        :style="{marginTop: sp('-24px', '-32px', '-2vh', '-3vh', '-4vh')}"
       >
         <transition name="titleanim" appear>
           <h3
             class="item_title"
             v-if="show"
-            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '26px' : 
-                               $vuetify.breakpoint.smOnly ? '30px' : 
-                               $vuetify.breakpoint.mdOnly ? '34px' : 
-                               $vuetify.breakpoint.lgOnly ? '38px' : '42px'}"
+            :style="{fontSize: s(26, 4)}"
           >
             {{carousel_item.title}}
           </h3>
@@ -28,10 +22,7 @@
           <h3
             class="phrase mx-8"
             v-if="show"
-            :style="{fontSize: $vuetify.breakpoint.xsOnly ? '30px' : 
-                               $vuetify.breakpoint.smOnly ? '34px' : 
-                               $vuetify.breakpoint.mdOnly ? '38px' : 
-                               $vuetify.breakpoint.lgOnly ? '42px' : '46px'}"
+            :style="{fontSize: s(30, 4)}"
           >
             {{carousel_item.phrase}}
           </h3>
@@ -47,9 +38,12 @@
 </template>
 
 <script>
+import {s} from '../../mixins'
+
 export default {
   name: "CarouselItem",
   components: {},
+  mixins: [s],
   props: ['carousel_item', 'carousel_slide', 'index'],
   data: () => ({
   }),
