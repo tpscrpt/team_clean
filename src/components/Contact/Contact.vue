@@ -1,71 +1,107 @@
 <template>
-  <v-form
-    v-model="valid"
-    lazy-validation
+  <div class="contact_container d-flex align-center justify-center"
+    :style="{
+      width: '100%',
+      padding: s(16, 8)
+    }"    
   >
-    <v-text-field
-      v-model="name"
-      label="Name *"
-      :rules="name_rules"
-      outlined
-      required
-    ></v-text-field>
-    <v-text-field
-      v-model="email"
-      label="Email *"
-      :rules="email_rules"
-      outlined
-      required
-    ></v-text-field>
-    <v-text-field
-      v-model="company"
-      label="Company"
-      outlined
-    ></v-text-field>
-    <v-select
-      label="Subject"
-      outlined
-      :items="subjects"
-      v-model="subject"
-      required
-    >
-    </v-select>
-    <v-textarea
-      label="Message"
-    >
-    </v-textarea>
-    <div
-      width="100%"
-      class="d-flex align-center justify-center"
-    >
-      <v-btn
-        class="navbar_button" 
-        :disabled="!valid"
-        @click="submit"
-        rounded
-        color="accent"
-        :large="$vuetify.breakpoint.mdAndUp"
-        :style="{
-          fontSize: $vuetify.breakpoint.xsOnly ? '16px' : 
-                    $vuetify.breakpoint.smOnly ? '20px' : 
-                    $vuetify.breakpoint.mdOnly ? '24px' : 
-                    $vuetify.breakpoint.lgOnly ? '22px' : '32px',
-        }"
-      >
-        <span> Send </span>
-      </v-btn>
-    </div>
+    <div class="container_subcontainer d-column align-center justify-start"
+      :style="{
+        width: $vuetify.breakpoint.xsOnly ? undefined : 
+               $vuetify.breakpoint.smOnly ? '70vw' :
+               $vuetify.breakpoint.mdOnly ? '50vw' :
+               $vuetify.breakpoint.lgOnly ? '30vw' : '25vw' 
 
-  </v-form>
+      }"
+    >
+      <v-form
+        v-model="valid"
+        lazy-validation
+      >
+        <v-text-field
+          v-model="name"
+          label="Name"
+          :rules="name_rules"
+          outlined
+          color="accent"
+        ></v-text-field>
+        <v-text-field
+          color="accent"
+          label="Phone Number"
+          outlined
+          type="phone"
+          :required="phone_required"
+        ></v-text-field>
+        <v-text-field
+          color="accent"
+          v-model="email"
+          label="Email"
+          :rules="email_rules"
+          outlined
+        ></v-text-field>
+        <v-text-field
+          color="accent"
+          v-model="company"
+          label="Company"
+          outlined
+        ></v-text-field>
+        <v-select
+          color="accent"
+          label="Subject"
+          outlined
+          :items="subjects"
+          v-model="subject"
+        >
+        </v-select>
+        <v-date-picker
+          header-color="primary"
+          color="accent"
+          full-width
+          :min="now()"
+          multiple
+          v-model="dates"
+        ></v-date-picker>
+        <v-textarea
+          color="accent"
+          label="Message"
+          :style="{marginTop: s(8, 4)}"
+        >
+        </v-textarea>
+        <div
+          width="100%"
+          class="d-flex align-center justify-center"
+        >
+          <v-btn
+            class="navbar_button" 
+            :disabled="!valid"
+            @click="submit"
+            rounded
+            color="accent"
+            :large="$vuetify.breakpoint.mdAndUp"
+            :style="{
+              fontSize:  s(16, 2),
+              marginTop: s(8,  4)
+            }"
+          >
+            <span> Send </span>
+          </v-btn>
+        </div>
+
+      </v-form>
+    </div>
+  </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+
 import rules from './rules'
 import subjects from './subjects'
 
+import {s as s_func} from '../../utils'
+
 export default {
   name: 'Contact',
-  props: ['set_name', 'set_email', 'set_company', 'set_subject'],
   data: () => ({
     valid: null,
     ...rules,
@@ -73,7 +109,8 @@ export default {
     name: '',
     email: '',
     company: '',
-    subject: ''
+    subject: '',
+    dates: [],
   }),
 
   created () {
@@ -85,9 +122,33 @@ export default {
   },
 
   computed: {
+    ...mapState([
+      'contact_set_subject'
+    ]),
+    phone_required () {
+      return 'Talk' === this.subject
+    },
+    show_date_picker () {
+      return ['Schedule', 'Talk'].includes(this.subject)
+    }
+  },
+
+  watch: {
+    contact_set_subject (val) {
+      this.subject = val
+    }
   },
 
   methods: {
+    s (base, increment, suffix = 'px') {
+      return s_func(this.$vuetify, base, increment, suffix)
+    },
+    date_filter(val) {
+      return Date.now() - 84600000 * 2 - new Date(val) < 0
+    },
+    now() {
+      return new Date(Date.now() - 84600000).toISOString()
+    },
     submit () {
       
     }
