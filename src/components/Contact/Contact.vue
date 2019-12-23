@@ -7,11 +7,7 @@
   >
     <div class="container_subcontainer d-column align-center justify-start"
       :style="{
-        width: $vuetify.breakpoint.xsOnly ? undefined : 
-               $vuetify.breakpoint.smOnly ? '70vw' :
-               $vuetify.breakpoint.mdOnly ? '50vw' :
-               $vuetify.breakpoint.lgOnly ? '30vw' : '25vw' 
-
+        width: sn('80', '70', '50', '30', '25', 'vw')
       }"
     >
       <v-form
@@ -54,6 +50,7 @@
         >
         </v-select>
         <v-date-picker
+          v-if="show_date_picker"
           header-color="primary"
           color="accent"
           full-width
@@ -98,10 +95,11 @@ import {mapState} from 'vuex'
 import rules from './rules'
 import subjects from './subjects'
 
-import {s as s_func} from '../../utils'
+import {s} from '../../mixins'
 
 export default {
   name: 'Contact',
+  mixins: [s],
   data: () => ({
     valid: null,
     ...rules,
@@ -112,14 +110,6 @@ export default {
     subject: '',
     dates: [],
   }),
-
-  created () {
-    console.log(this.set_name)
-    this.name = this.set_name
-    this.email = this.set_email
-    this.company = this.set_company
-    this.subject = this.set_subject
-  },
 
   computed: {
     ...mapState([
@@ -140,9 +130,6 @@ export default {
   },
 
   methods: {
-    s (base, increment, suffix = 'px') {
-      return s_func(this.$vuetify, base, increment, suffix)
-    },
     date_filter(val) {
       return Date.now() - 84600000 * 2 - new Date(val) < 0
     },
