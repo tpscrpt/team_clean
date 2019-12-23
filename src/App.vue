@@ -5,6 +5,7 @@
     <v-content>
       <Carousel v-if="false"/>
       <AboutUs v-if="true"/>
+      <Footer/>
     </v-content>
   </v-app>
 </template>
@@ -13,7 +14,7 @@
 import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
 import AboutUs from './components/AboutUs/AboutUs'
-
+import Footer from './components/Footer/Footer'
 export default {
   name: 'App',
 
@@ -21,6 +22,7 @@ export default {
     AppBar,
     Carousel,
     AboutUs,
+    Footer,
   },
 
   watch: {
