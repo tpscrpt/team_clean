@@ -19,7 +19,7 @@
     >
       <v-icon color="secondary" :size="sn(152, 107, 128, 152, 168)">{{reason.img}}</v-icon>
     </div>
-    <div class="reason_text_container flex-column align-start justify-start grow"
+    <div class="reason_text_container flex-column align-start justify-start"
       :style="{
         maxWidth: sp(undefined, '50%', '45%', '45%', '35%')
       }"
