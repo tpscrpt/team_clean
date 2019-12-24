@@ -6,7 +6,7 @@
   >
     <div class="why_title_container"
       :style="{
-        marginLeft: sn(30, 80, 200, 230, 350),
+        marginLeft: sp('30px', '80px', '200px', '230px', '20vw'),
         marginBottom: sn(16, 24, 32, 40, 48)
       }"
     >

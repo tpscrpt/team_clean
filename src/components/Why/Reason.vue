@@ -1,13 +1,13 @@
 <template>
   <div class="reason_container d-flex align-start flex-wrap"
     :style="{
-      justifyContent: sp('center', 'center', 'center', 'center', 'flex-start'),
+      justifyContent: sp('center', 'center', 'center', 'center', 'center', 'center'),
       paddingLeft: s(30, 5),
       paddingTop: s(10, 5),
       paddingBottom: s(10, 5),
       paddingRight: s(30, 5),
       marginBottom: s(30, 1),
-      marginRight: sn(0, 20, 30, 250, 50)
+      marginRight: sp(0, '20px', '30px', '250px', 'calc(25vw - 200px)')
     }"
   >
     <div class="reason_img_container self-center"
@@ -19,7 +19,7 @@
     >
       <v-icon color="secondary" :size="sn(152, 107, 128, 152, 168)">{{reason.img}}</v-icon>
     </div>
-    <div class="reason_text_container flex-column align-start justify-start shrink"
+    <div class="reason_text_container flex-column align-start justify-start grow"
       :style="{
         maxWidth: sp(undefined, '50%', '45%', '45%', '35%')
       }"
@@ -35,10 +35,10 @@
           {{reason.title}}
         </h3>
       </div>
-      <div class="reason_desc_container">
+      <div class="reason_desc_container" width="100%">
         <p class="reason_desc"
           :style="{
-            fontSize: s(16, 2)
+            fontSize: s(16, 2),
           }"
         >
           {{reason.desc}}
