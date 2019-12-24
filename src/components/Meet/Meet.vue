@@ -2,6 +2,7 @@
   <div class="meet_container flex-column align-center justify-center"
     :style="{
       padding: sn(0, 2, 3, 4, 5, 'vw'),
+      paddingTop: sp('calc(0vw + 16px)','calc(2vw + 16px)','calc(3vw + 24px)', 'calc(4vw + 24px)', 'calc(5vw + 32px)')
     }"
   >
     <div class="meet_title_container">
