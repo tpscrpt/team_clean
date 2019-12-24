@@ -1,15 +1,15 @@
 <template>
-  <div v-if="show" class="stats_container shrink d-flex align-start justify-end flex-wrap">
-    <div class="jobs_container"></div>
-    <div class="rating_container">
-      <v-icon
-        :style="{
-          background: `linear-gradient(to bottom, black 0%, black 50%, #000000 50%,w hite 50%, white 100%)`
-        }"
-        color="primary"
-      >
-        mdi-star-outline
+  <div v-if="show" class="stats_container d-flex align-center justify-start flex-wrap">
+    <div class="rating_container d-flex align-center justify-end">
+      <v-icon v-for="(star, index) in stars" :key="index" color="#FFD700">
+        {{star == 1 ? 'mdi-star' : star == 0.5 ? 'mdi-star-half' : 'mdi-star-outline'}}
       </v-icon>
+      <span
+        class="stats_jobs"
+        :style="{
+          fontSize: s(14, 1)
+        }"
+      >({{jobs}})</span>
     </div>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
   created () {
     if (!this.member.id) return;
     if (this.testing) {
-      this.rating = 4.4
+      this.rating = 4.5
       this.jobs = 12
       this.show = true
       return
@@ -46,10 +46,27 @@ export default {
         this.show = true
     })
   },
-  computed: {}
+  computed: {
+    stars() {
+      let stars = []
+      const rounded = Math.round(this.rating * 2) / 2
+
+      for (let i = 0; i < Math.floor(rounded); i ++) stars.push(1)
+      if (rounded % 1 > 0) stars.push(0.5)
+      for (let i = 0; stars.length < 5; i ++) stars.push(0)
+
+      return stars
+    }
+  }
 }
 </script>
 
 <style>
-
+.stats_container {
+  margin-left: -4px
+}
+.stats_jobs {
+  font-family: 'Babylove';
+  color: var(--v-accent-darken1)
+}
 </style>

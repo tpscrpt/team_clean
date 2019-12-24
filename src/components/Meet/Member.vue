@@ -18,7 +18,8 @@
       />
     </div>
     <br>
-    <div class="member_name_container d-flex align-start justify-space-between">
+    <Stats :member="member" />
+    <div class="member_name_container d-flex align-start justify-space-between flex-wrap">
       <h3 class="member_name"
         :style="{
           fontSize: sn(22, 22, 24, 24, 24)
@@ -26,7 +27,7 @@
       >
         {{member.name}}
       </h3>
-      <Stats :member="member" />
+
     </div>
     <div class="member_title_container text-left">
       <h3 class="member_title"
