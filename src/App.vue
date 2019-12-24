@@ -6,7 +6,10 @@
       <Carousel id="Services" v-if="true"/>
       <Why id="Why" v-if="true"/>
       <Meet id="Team" v-if="true"/>
-      <Contact id="Contact" v-if="false"/>
+      <div class="d-flex align-start justify-space-around flex-wrap">
+        <Reviews id="Reviews" v-if="true" :style="duoBlockBaseStyle"/>
+        <Contact id="Contact" v-if="true" :style="duoBlockBaseStyle"/>
+      </div>
       <Footer id="Footer" v-if="true"/>
     </v-content>
   </v-app>
@@ -17,17 +20,23 @@ import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
 import Why from './components/Why/Why'
 import Meet from './components/Meet/Meet'
+import Reviews from './components/Reviews/Reviews'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 
+import {s} from './mixins'
+
 export default {
   name: 'App',
+
+  mixins: [s],
 
   components: {
     AppBar,
     Carousel,
     Why,
     Meet,
+    Reviews,
     Contact,
     Footer,
   },
@@ -35,12 +44,15 @@ export default {
   watch: {
   },
 
-  data: () => ({
-    wave_1: require('./assets/waves/wave_1.webp'),
-  }),
+  data: () => ({}),
 
   computed: {
-
+    duoBlockBaseStyle () {
+      return {
+        width: this.sn(90, 70, 50, 50, 50, 'vw'),
+        padding: this.s(16, 8)
+      }
+    }
   },
 
   methods: {

@@ -1,11 +1,11 @@
 <template>
   <div class="reviews_container"
     :style="{
-      width: sn(90, 70, 50, 50, 50, 'vw')
+      width: '100%'
     }"
   >
     <div class="reviews_title_container">
-      <h3 class="reviews_title">Reviews</h3>
+      <ResponsiveTitle text="Reviews" />
     </div>
     <v-carousel
       hide-delimiter-background
@@ -30,24 +30,28 @@
 import {s} from '../../mixins'
 import testing_reviews from './testing_reviews'
 import Review from './Review'
+import {Title as ResponsiveTitle} from '../responsive'
 
 export default {
   name: 'Reviews',
   mixins: [s],
   components: {
-    Review
+    Review,
+    ResponsiveTitle
   },
   data: () => ({
-    reviews: []
+    reviews: [],
+    testing: true,
   }),
   computed: {},
   watch: {},
   created () {
-    if (this.testing) {this.reviews = testing_reviews}
+    console.log(this.testing)
+    if (this.testing) { return this.reviews = testing_reviews}
     fetch('https://api.bears.group/team_clean/reviews')
       .then(res => res.json())
       .then((json) => {
-      const reviews = { data } = json
+      const { reviews } = json
       if (reviews && reviews.length > 0) this.reviews = reviews
     })
   }

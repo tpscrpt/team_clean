@@ -1,13 +1,16 @@
 <template>
-  <div class="contact_container d-flex align-center justify-center"
+  <div class="contact_container flex-column align-center justify-center"
     :style="{
       width: '100%',
       padding: s(16, 8)
     }"    
   >
+    <div class="contact_title_container">
+      <ResponsiveTitle text="Say Hi!"/>
+    </div>
     <div class="container_subcontainer d-column align-center justify-start"
       :style="{
-        width: sn('80', '70', '50', '30', '25', 'vw')
+        width: sn('80', '60', '50', '30', '25', 'vw')
       }"
     >
       <v-form
@@ -96,10 +99,12 @@ import rules from './rules'
 import subjects from './subjects'
 
 import {s} from '../../mixins'
+import {Title as ResponsiveTitle} from '../../components/responsive'
 
 export default {
   name: 'Contact',
   mixins: [s],
+  components: {ResponsiveTitle},
   data: () => ({
     valid: null,
     ...rules,
