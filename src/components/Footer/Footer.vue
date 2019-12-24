@@ -6,7 +6,8 @@
   >
     <h4 class="footer_title"
       :style="{
-        fontSize: s(16, 3)
+        fontSize: s(16, 3),
+        letterSpacing: sn(1, 2, 2, 2, 2)
       }"  
     >Team Clean, A Bears Group Project</h4>
     <div class="social_icons d-flex align-center justify-start"
