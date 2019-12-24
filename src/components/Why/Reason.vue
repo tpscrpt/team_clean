@@ -17,18 +17,18 @@
         marginBottom: s(15, 0)
       }"
     >
-      <v-icon :color="'secondary'" :size="sn(152, 107, 128, 152, 168)">{{reason.img}}</v-icon>
+      <v-icon color="secondary" :size="sn(152, 107, 128, 152, 168)">{{reason.img}}</v-icon>
     </div>
     <div class="reason_text_container flex-column align-start justify-start shrink"
       :style="{
-        maxWidth: sp(undefined, '50%', '35%', '35%', '35%')
+        maxWidth: sp(undefined, '50%', '45%', '45%', '35%')
       }"
     >
       <div class="reason_title_container">
         <h3 class="reason_title"
           :style="{
             fontSize: $vuetify.breakpoint.xsOnly ? '32px' : s(24, 4),
-            letterSpacing: sn(1.5, 1, 2, 2, 3),
+            letterSpacing: sn(1.5, 2, 2, 2, 3),
             marginBottom: s(4, 4)
           }"
         >
@@ -36,13 +36,13 @@
         </h3>
       </div>
       <div class="reason_desc_container">
-        <span class="reason_desc"
+        <p class="reason_desc"
           :style="{
-            fontSize: s(16, 4)
+            fontSize: s(16, 2)
           }"
         >
           {{reason.desc}}
-        </span>
+        </p>
       </div>
     </div>
   </div>
@@ -70,9 +70,7 @@ export default {
 }
 .reason_desc {
   font-family: 'Roboto', sans-serif;
-  text-align: left;
-  text-justify: inter-word;
+  text-align: justify;
   font-weight: 300;
-  color: var(--v-secondary-darken4)
 }
 </style>

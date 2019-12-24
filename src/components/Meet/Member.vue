@@ -36,7 +36,11 @@
     </div>
     <br>
     <div class="member_excerpt_container">
-      <p class="member_excerpt">{{member.excerpt}}</p>
+      <p class="member_excerpt"
+        :style="{
+          fontSize: sn(16, 16, 18, 20, 22)
+        }"
+      >{{member.excerpt}}</p>
     </div>
   </div>
 </template>

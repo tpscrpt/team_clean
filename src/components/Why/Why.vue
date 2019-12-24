@@ -1,13 +1,13 @@
 <template>
   <div class="why_container flex-column align-center justify-start"
     :style="{
-      marginTop: s(20, 10)
+      marginTop: s(20, 20)
     }"
   >
     <div class="why_title_container"
       :style="{
         marginLeft: sn(30, 80, 200, 230, 350),
-        marginBottom: sn(16, 12, 14, 16, 18)
+        marginBottom: sn(16, 24, 32, 40, 48)
       }"
     >
       <h2

@@ -3,8 +3,8 @@
     <AppBar />
 
     <v-content>
-      <Carousel v-if="false"/>
-      <Why v-if="false"/>
+      <Carousel v-if="true"/>
+      <Why v-if="true"/>
       <Meet v-if="true"/>
       <AboutUs v-if="false"/>
       <Contact v-if="false"/>
