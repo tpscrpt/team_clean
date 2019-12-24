@@ -1,7 +1,7 @@
 <template>
   <div class="member_container flex-column align-center justify-start"
     :style="{
-      width: sn(90, 70, 35, 35, 20, 'vw'),
+      width: sn(90, 70, 35, 35, 30, 'vw'),
       padding: s(12, 4),
       margin: sn(1, 2, 2, 2, 3, 'vw'),
       marginBottom: s(10, 0),
