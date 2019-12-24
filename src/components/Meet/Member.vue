@@ -71,7 +71,7 @@ export default {
 .member_excerpt {
   text-align: justify;
   font-family: 'Roboto', sans-serif;
-  font-weight: 400;
+  font-weight: 300;
 }
 .member_img {
   border-radius: 50%
