@@ -1,7 +1,7 @@
 <template>
   <div class="why_container flex-column align-center justify-start"
     :style="{
-      marginTop: s(20, 20)
+      paddingTop: s(20, 20)
     }"
   >
     <div class="why_title_container"
