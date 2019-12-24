@@ -3,12 +3,11 @@
     <AppBar />
 
     <v-content>
-      <Carousel v-if="true"/>
-      <Why v-if="true"/>
-      <Meet v-if="true"/>
-      <AboutUs v-if="false"/>
-      <Contact v-if="false"/>
-      <Footer v-if="false"/>
+      <Carousel id="Services" v-if="true"/>
+      <Why id="Why" v-if="true"/>
+      <Meet id="Team" v-if="true"/>
+      <Contact id="Contact" v-if="false"/>
+      <Footer id="Footer" v-if="true"/>
     </v-content>
   </v-app>
 </template>
@@ -16,7 +15,6 @@
 <script>
 import AppBar from './components/AppBar/AppBar'
 import Carousel from './components/Carousel/Carousel'
-//import AboutUs from './components/AboutUs/AboutUs'
 import Why from './components/Why/Why'
 import Meet from './components/Meet/Meet'
 import Contact from './components/Contact/Contact'
@@ -28,7 +26,6 @@ export default {
   components: {
     AppBar,
     Carousel,
-//    AboutUs,
     Why,
     Meet,
     Contact,
