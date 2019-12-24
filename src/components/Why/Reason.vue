@@ -21,7 +21,7 @@
     </div>
     <div class="reason_text_container flex-column align-start justify-start"
       :style="{
-        maxWidth: sp(undefined, '50%', '45%', '45%', '35%')
+        width: sp(undefined, '50%', '45%', '45%', '35%')
       }"
     >
       <div class="reason_title_container">
@@ -35,7 +35,7 @@
           {{reason.title}}
         </h3>
       </div>
-      <div class="reason_desc_container" width="100%">
+      <div class="reason_desc_container">
         <p class="reason_desc"
           :style="{
             fontSize: s(16, 2),
