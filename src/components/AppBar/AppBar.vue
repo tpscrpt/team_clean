@@ -1,7 +1,8 @@
 <template>
-  <v-app-bar app color="primary" dark>
-    <div class="d-flex align-center">
+  <v-app-bar id="AppBar" app color="primary" dark>
+    <div class="logo_container d-flex align-center">
       <v-img
+        @click="goToAppBar"
         alt="Team Clean Logo"
         class="shrink mr-2 mb-2"
         contain
@@ -12,62 +13,79 @@
     </div>
 
     <v-spacer></v-spacer>
-    <div v-if="!$vuetify.breakpoint.xsOnly">
-      <v-btn text rounded class="navbar_link"
+    <div v-if="!$vuetify.breakpoint.smAndDown" class="d-flex align-center justify-center shrink" :style="{
+    }">
+      <v-btn text rounded class="navbar_link" v-for="link in links" :key="link"
+        :href="'#' + link"
         :style="{
-            fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
+          fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
         }"
       >
-        About us</v-btn>
-      <v-btn text rounded class="navbar_link"
+        {{link}}
+      </v-btn>
+      <div class="d-flex shrink"
         :style="{
-            fontSize: `${$vuetify.breakpoint.mdAndUp ? '22' : '15'}px !important`
+          width: '5vw'
         }"
-      >
-        Contact</v-btn>
+      ></div>
     </div>
-    <v-spacer></v-spacer>
-    <v-divider vertical></v-divider>
-    <div class="ml-3">
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-        rounded
-        outlined
-        elevation="2"
-        class="navbar_button mr-2"
-        :small="$vuetify.breakpoint.smAndDown"
-      >
-        <v-icon :size="$vuetify.breakpoint.smAndDown ? '14' : '18'">mdi-email</v-icon>
-      </v-btn>
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-        rounded
-        outlined
-        elevation="2"
-        class="navbar_button"
-        :small="$vuetify.breakpoint.smAndDown"
-      >
-        <v-icon :size="$vuetify.breakpoint.smAndDown ? '14' : '18'">mdi-phone</v-icon>
-      </v-btn>
+    <div v-if="$vuetify.breakpoint.smAndDown" class="ml-3 d-flex align-center justify-center">
+      <v-spacer></v-spacer>
+      <v-divider vertical></v-divider>
+      <div >
+        <v-btn
+          href="https://github.com/vuetifyjs/vuetify/releases/latest"
+          target="_blank"
+          text
+          rounded
+          outlined
+          elevation="2"
+          class="navbar_button mr-2"
+          :small="$vuetify.breakpoint.smAndDown"
+        >
+          <v-icon :size="$vuetify.breakpoint.smAndDown ? '14' : '18'">mdi-email</v-icon>
+        </v-btn>
+        <v-btn
+          href="https://github.com/vuetifyjs/vuetify/releases/latest"
+          target="_blank"
+          text
+          rounded
+          outlined
+          elevation="2"
+          class="navbar_button"
+          :small="$vuetify.breakpoint.smAndDown"
+        >
+          <v-icon :size="$vuetify.breakpoint.smAndDown ? '14' : '18'">mdi-phone</v-icon>
+        </v-btn>
+      </div>
     </div>
+
   </v-app-bar>
 </template>
 
 <script>
+import {s} from '../../mixins'
+
 export default {
   name: 'AppBar',
+  mixins: [s],
   components: {},
   data: () => ({
     logo: require('../../assets/logo_horiz_turq_whitetext.png'),
+    links: ["Services", "Why", "Team", "Contact",]
   }),
+  methods: {
+    goToAppBar () {
+      window.scrollTo(0, 0)
+    }
+  }
 };
 </script>
 
 <style>
+.logo_container {
+  cursor: pointer;
+}
 .navbar_link {
   font-family: "Babylove" !important;
 }
