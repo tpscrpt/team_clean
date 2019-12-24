@@ -1,7 +1,7 @@
 <template>
   <div class="member_container flex-column align-center justify-start"
     :style="{
-      width: sn(90, 70, 35, 20, 20, 'vw'),
+      width: sn(90, 70, 35, 35, 20, 'vw'),
       padding: s(12, 4),
       margin: sn(1, 2, 2, 2, 3, 'vw'),
       marginBottom: s(10, 0),
@@ -18,7 +18,7 @@
       />
     </div>
     <br>
-    <div class="member_name_container text-center">
+    <div class="member_name_container d-flex align-start justify-space-between">
       <h3 class="member_name"
         :style="{
           fontSize: sn(22, 22, 24, 24, 24)
@@ -26,6 +26,7 @@
       >
         {{member.name}}
       </h3>
+      <Stats :member="member" />
     </div>
     <div class="member_title_container text-left">
       <h3 class="member_title"
@@ -47,12 +48,15 @@
 
 <script>
 import {s} from '../../mixins'
+import Stats from './Stats'
 
 export default {
   name: 'Member',
   mixins: [s],
   props: ['member'],
-  components: {},
+  components: {
+    Stats
+  },
   data: () => ({}),
   computed: {},
 }
