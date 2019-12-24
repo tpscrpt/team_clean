@@ -6,10 +6,8 @@
       <Carousel id="Services" v-if="true"/>
       <Why id="Why" v-if="true"/>
       <Meet id="Team" v-if="true"/>
-      <div class="d-flex align-start justify-space-around flex-wrap">
-        <Reviews id="Reviews" v-if="true" :style="duoBlockBaseStyle"/>
-        <Contact id="Contact" v-if="true" :style="duoBlockBaseStyle"/>
-      </div>
+      <Reviews id="Reviews" v-if="true" :style="duoBlockBaseStyle"/>
+      <Contact id="Contact" v-if="true" :style="duoBlockBaseStyle"/>
       <Footer id="Footer" v-if="true"/>
     </v-content>
   </v-app>
