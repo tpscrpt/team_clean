@@ -7,18 +7,11 @@
     <div class="why_title_container"
       :style="{
         marginLeft: sp('30px', '80px', '200px', '230px', '20vw'),
-        marginBottom: sn(16, 24, 32, 40, 48)
+        textAlign: 'left'
       }"
     >
-      <h2
-        :style="{
-          fontSize: sn(38, 32, 40, 48, 56),
-          textAlign: 'left',
-          textDecoration: 'underline'
-        }"
-      >
-        Why choose us?
-      </h2>
+      <ResponsiveTitle text="Why choose us?"/>
+
     </div>
     <Reason v-for="(reason, index) in reasons" :key="index" :reason="reason"/>
   </div>
@@ -28,12 +21,14 @@
 import {s} from '../../mixins'
 import Reason from './Reason'
 import reasons from './reasons'
+import {Title as ResponsiveTitle} from '../responsive'
 
 export default {
   name: 'Why',
   mixins: [s],
   components: {
-    Reason
+    Reason,
+    ResponsiveTitle
   },
   data: () => ({
     reasons
